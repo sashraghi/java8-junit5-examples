@@ -18,6 +18,7 @@ public class ConsumerTest {
         assertEquals("Hello JUnit 5", MessageService.get());
     }
 
+    @DisplayName("test names presented in the list")
     @Test
     public void whenNamesPresentConsumeAll() {
         Consumer<String> printConsumer = t -> System.out.println(t);
@@ -25,9 +26,9 @@ public class ConsumerTest {
         cities.forEach(printConsumer);
     }
 
+    @DisplayName("test names present use both consumer")
     @Test
     public void whenNamesPresentUseBothConsumer() {
-        //Stream<String> cities = Stream.of("Sydney", "Dhaka", "New York", "London");
         List<String> listOfCities = Arrays.asList("Sydney", "Dhaka", "New York", "London");
 
         Consumer<List<String>> upperCaseConsumer = list -> {
@@ -36,7 +37,6 @@ public class ConsumerTest {
             }
         };
 
-        //Consumer<String> printConsumer = t -> System.out.println(t);
         Consumer<List<String>> printConsumerList = list ->{
           list.stream().forEach(System.out::println);
         };

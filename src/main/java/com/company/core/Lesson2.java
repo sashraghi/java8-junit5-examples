@@ -48,10 +48,7 @@ public class Lesson2 {
         List<String> list = Arrays.asList(
                 "The", "Quick", "BROWN", "Fox", "Jumped", "Over", "The", "LAZY", "DOG");
 
-        /* YOUR CODE HERE */
-        //list.stream().forEach( s -> System.out.println(s.toLowerCase()));
-
-        List<String> result = list.stream().map(s -> s.toLowerCase()).collect(Collectors.toList());
+        List<String> result = list.stream().map(String::toLowerCase).collect(Collectors.toList());
         result.forEach(System.out::println);
 
     }
@@ -66,8 +63,7 @@ public class Lesson2 {
         List<String> list = Arrays.asList(
                 "The", "Quick", "BROWN", "Fox", "Jumped", "Over", "The", "LAZY", "DOG");
 
-        /* YOUR CODE HERE */
-        List<String> result = list.stream().filter(s -> s.length() % 2 == 0).map(s -> s.toLowerCase()).collect(Collectors.toList());
+        List<String> result = list.stream().filter(s -> s.length() % 2 == 0).map(String::toLowerCase).collect(Collectors.toList());
         result.forEach(System.out::println);
     }
 
@@ -81,7 +77,6 @@ public class Lesson2 {
         List<String> list = Arrays.asList(
                 "The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog");
 
-        /* YOUR CODE HERE */
         String result = list.stream().skip(1).limit(3).collect(Collectors.joining(" - "));
         System.out.println(result);
     }
@@ -92,7 +87,7 @@ public class Lesson2 {
     private void exercise4() throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(
                 Paths.get("src/main/resources/SonnetI.txt"), StandardCharsets.UTF_8)) {
-            /* YOUR CODE HERE */
+
             System.out.println(reader.lines().count());
         }
     }
@@ -106,9 +101,6 @@ public class Lesson2 {
     private void exercise5() throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(
                 Paths.get("src/main/resources/SonnetI.txt"), StandardCharsets.UTF_8)) {
-            /* YOUR CODE HERE */
-            //Predicate<String> emailFilter = Pattern.compile(WORD_REGEXP).asPredicate();
-            //List<String> result = reader.lines().filter(emailFilter).collect(Collectors.toList());
 
             Stream <String> lines = reader.lines().map(s -> s.split(WORD_REGEXP)).flatMap(Arrays::stream);
             lines.distinct().forEach(System.out::println);
@@ -123,10 +115,9 @@ public class Lesson2 {
     private void exercise6() throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(
                 Paths.get("src/main/resources/SonnetI.txt"), StandardCharsets.UTF_8)) {
-            /* YOUR CODE HERE */
-            //reader.lines().limit(1).forEach(System.out::println);
             Stream <String> lines = reader.lines().map(s -> s.split(WORD_REGEXP)).flatMap(Arrays::stream);
-            lines.map(s -> s.toLowerCase()).distinct().sorted().forEach(System.out::println);
+
+            lines.map(String::toLowerCase).distinct().sorted().forEach(System.out::println);
         }
     }
 
@@ -136,7 +127,7 @@ public class Lesson2 {
     private void exercise7() throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(
                 Paths.get("src/main/resources/SonnetI.txt"), StandardCharsets.UTF_8)) {
-            /* YOUR CODE HERE */
+
             Stream <String> lines = reader.lines().map(s -> s.split(WORD_REGEXP)).flatMap(Arrays::stream);
             lines.map(s -> s.toLowerCase()).distinct().sorted(Comparator.comparingInt(String::length)).forEach(System.out::println);
         }

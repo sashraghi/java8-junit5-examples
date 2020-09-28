@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PredicateTest {
 
+    @DisplayName("test predicate length")
     @Test
     public void testPredicateLength() {
         final List<String> names = Arrays.asList("John", "Smith", "Samueal", "Catley", "Sie");
@@ -20,6 +21,7 @@ public class PredicateTest {
         names.stream().filter(nameLength).forEach(System.out::println);
     }
 
+    @DisplayName("test predicate start with")
     @Test
     public void testPredicateStartWith() {
         final List<String> names = Arrays.asList("John", "Smith", "Samueal", "Catley", "Sie");
@@ -27,6 +29,7 @@ public class PredicateTest {
         names.stream().filter(nameStartWithS).forEach(System.out::println);
     }
 
+    @DisplayName("test predicate and composition")
     @Test
     public void testPredicateAndComposition() {
         List<String> names = Arrays.asList("John", "Smith", "Samueal", "Catley", "Sie");
@@ -36,11 +39,5 @@ public class PredicateTest {
         names.stream().filter(startPredicate.and(lengthPredicate)).forEach(System.out::println);
 
 
-    }
-
-    @DisplayName("Test MessageService.get()")
-    @Test
-    void testGet() {
-        assertEquals("Hello JUnit 5", MessageService.get());
     }
 }

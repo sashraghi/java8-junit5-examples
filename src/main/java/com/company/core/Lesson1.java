@@ -1,6 +1,10 @@
 package com.company.core;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.function.BiFunction;
 
 public class Lesson1 {
@@ -35,7 +39,6 @@ public class Lesson1 {
         List<String> list = Arrays.asList(
                 "alpha", "bravo", "charlie", "delta", "echo", "foxtrot");
 
-        /* YOUR CODE HERE */
         list.forEach(s -> System.out.println(s.charAt(0)));
     }
 
@@ -48,9 +51,8 @@ public class Lesson1 {
         List<String> list = new ArrayList<>(Arrays.asList(
                 "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
-        /* YOUR CODE HERE */
-        //list.forEach(s -> {if(s.length() % 2== 1) System.out.println(s);});
         list.removeIf(s -> s.length() % 2 == 0);
+
         list.forEach(System.out::println);
 
 
@@ -65,7 +67,6 @@ public class Lesson1 {
         List<String> list = new ArrayList<>(Arrays.asList(
                 "alpha", "bravo", "charlie", "delta", "echo", "foxtrot"));
 
-        /* YOUR CODE HERE */
         list.forEach(s -> System.out.println(s.toUpperCase()));
     }
 
@@ -81,10 +82,7 @@ public class Lesson1 {
         map.put("b", 2);
         map.put("a", 1);
 
-        /* YOUR CODE HERE */
         StringBuilder sb = new StringBuilder();
-        //map.forEach((String key, Integer value) -> sb.append(key).append(" - ").append(value).append("; "));
-        //System.out.println(sb.toString());
 
         BiFunction<String, Integer, String> biFunction = (String key, Integer value) -> {
             return sb.append(key).append(" - ").append(value).append("; ").toString();
@@ -101,7 +99,6 @@ public class Lesson1 {
     private void exercise5() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-        /* YOUR CODE HERE */
         new Thread(() -> {
             list.forEach(System.out::println);
         }).start();
